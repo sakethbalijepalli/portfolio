@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --bg: #0b0b10;
+  --panel:#101018;
+  --text:#e6e6ea;
+  --muted:#9aa0a6;
+  --accent:#7c5cff;
+  --ring: rgba(124,92,255,.3);
+  --card:#12121a;
+}
+:root.light{
+  --bg:#ffffff;
+  --panel:#f7f7fb;
+  --text:#0b0b10;
+  --muted:#5c6268;
+  --accent:#5a35ff;
+  --ring: rgba(90,53,255,.25);
+  --card:#ffffff;
+}
+
+html, body { height: 100%; }
+body { background: var(--bg); color: var(--text); }
+
+.container { @apply max-w-5xl mx-auto px-4; }
+.card { @apply rounded-2xl border border-white/10 bg-[color:var(--card)] p-5; }
+.btn { @apply inline-flex items-center gap-2 rounded-xl border border-white/10 px-4 py-2 bg-[color:var(--panel)] hover:shadow-ring transition; }
+.btn-primary { @apply bg-[color:var(--accent)] text-white border-0; }
+.link { @apply underline decoration-transparent hover:decoration-[color:var(--accent)] transition; }
+.muted { color: var(--muted); }

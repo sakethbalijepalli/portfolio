@@ -1,4 +1,7 @@
 export const posts = [
-  { title: 'Taming Legacy Code: A Playbook', date: '2025-10-10', url: '#', summary: 'Feature flags, characterization tests, and incremental refactors that won’t break prod.' },
-  { title: 'Kafka Consumers that Fail Gracefully', date: '2025-09-02', url: '#', summary: 'Idempotency, dead-letter topics, and observability patterns that keep pipelines healthy.' }
+  { title: 'My First Post', 
+    date: '08-09-2025', 
+    url: '#', 
+    summary: 'Kicking off my personal blog with insights on coding, backend development, and building side projects that matter.'
+  }
 ] as const;

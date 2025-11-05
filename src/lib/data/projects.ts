@@ -1,23 +1,22 @@
 export const projects = [
   {
-    title: 'Real-Time Log Triage Dashboard',
-    description: 'Streamed app logs from Kafka, auto-grouped errors, and surfaced actionable signals to cut MTTR.',
-    bullets: ['Java + Spring Boot for ingestion, WebSocket updates for live UI.', 'Heuristics + rules to detect deploy regressions quickly.'],
+    title: 'Mini E-Commerce (Full Stack)',
+    description: 'Spring Boot + React MVP with product catalog, search, cart, and checkout.',
+    bullets: [
+      'REST APIs with pagination; MySQL schema for products, carts, orders.',
+      'Session-based cart; Axios front-end; Docker Compose for MySQL + Adminer.'
+    ],
     link: '#',
     linkLabel: 'Repo (coming soon)'
   },
   {
-    title: 'Deployment Guardrails',
-    description: 'Gradle/Jenkins plugins to run health checks and smoke tests before promoting to prod.',
-    bullets: ['Rollback triggers on SLO breach; Slack notifications.'],
-    link: '#',
-    linkLabel: 'Case Study'
-  },
-  {
-    title: 'Legacy Module Stabilization',
-    description: 'Refactored high-churn module behind feature flags, added contract tests and better SQL indexes.',
-    bullets: ['Results: fewer incidents, faster deploys, easier onboarding.'],
-    link: '#',
-    linkLabel: 'Before/After'
+    title: 'xlsx to json',
+    description: 'Reads Excel sheets, has a strict validation for each cell in a sheet, and returns structured JSON responses.',
+    bullets: [
+      'Spring Boot + Apache POI; schema mapping, type checks, required/enum constraints.',
+      'Per-row error reporting (line + column) and clean success payloads for downstream services.'
+    ],
+    link: 'https://github.com/sakethbalijepalli/XlsxToJson',
+    linkLabel: 'Repo'
   }
 ] as const;

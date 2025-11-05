@@ -11,7 +11,9 @@
 <Hero />
 
 <Section id="work" title="Experience">
-  <div class="grid md:grid-cols-2 gap-4">
+   <div
+  class="grid gap-4 items-start"
+  style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
     {#each experience as item}
       <ExperienceCard {item} />
     {/each}
@@ -19,7 +21,9 @@
 </Section>
 
 <Section id="projects" title="Selected Projects">
-  <div class="grid md:grid-cols-3 gap-4">
+  <div
+  class="grid gap-4"
+  style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
     {#each projects as p}
       <ProjectCard {p} />
     {/each}
@@ -31,9 +35,9 @@
     <div class="card">
       <h4 class="font-semibold mb-2">Backend</h4>
       <ul class="list-disc list-inside space-y-1 muted">
-        <li>Java 17, Spring Boot, REST</li>
-        <li>Kafka (streams, consumers)</li>
-        <li>JUnit, Mockito, Cucumber</li>
+        <li>Java 17, Spring Boot, REST, JavaScript, Python</li>
+        <li>AWS ECS, S3, Lambda services</li>
+        <li>JUnit, Mockito</li>
       </ul>
     </div>
     <div class="card">
@@ -47,7 +51,7 @@
     <div class="card">
       <h4 class="font-semibold mb-2">Data</h4>
       <ul class="list-disc list-inside space-y-1 muted">
-        <li>Oracle (SQL & tuning)</li>
+        <li>Redis, Redis Cache</li>
         <li>MySQL</li>
       </ul>
     </div>
@@ -56,13 +60,13 @@
       <ul class="list-disc list-inside space-y-1 muted">
         <li>Working with legacy systems</li>
         <li>Team collaboration</li>
-        <li>Clear runbooks & docs</li>
+        <li>Proactive, Interactive, Curious to learn new things</li>
       </ul>
     </div>
   </div>
 </Section>
 
-<Section id="writing" title="Writing">
+<Section id="blog" title="Blog">
   <div class="grid sm:grid-cols-2 gap-4">
     {#each posts as post}
       <article class="card">
@@ -80,10 +84,10 @@
   <div class="card text-sm">
     <p class="mb-2">Interested in working together or just want to say hi?</p>
     <ul class="list-disc list-inside space-y-1">
-      <li>Email: <a class="link" href="mailto:saketh@example.com">saketh@example.com</a></li>
-      <li>LinkedIn: <a class="link" href="#" aria-disabled="true">linkedin.com/in/sakethbalijepalli</a></li>
-      <li>GitHub: <a class="link" href="#" aria-disabled="true">github.com/sakethbalijepalli</a></li>
-      <li><a class="btn mt-3" href="/Saketh-Balijepalli-Resume.pdf" download>Download Résumé</a></li>
+      <li>Email: <a class="link" href="mailto:saketh@icloud.com">saketh@icloud.com</a></li>
+      <li>LinkedIn: <a class="link" href="https://www.linkedin.com/in/sakethbalijepalli/" aria-disabled="true">linkedin.com/in/sakethbalijepalli</a></li>
+      <li>GitHub: <a class="link" href="https://github.com/sakethbalijepalli" aria-disabled="true">github.com/sakethbalijepalli</a></li>
+      <li><a class="btn mt-3" href="/Saketh-Balijepalli-Resume.pdf" download>Download Resume</a></li>
     </ul>
   </div>
 </Section>

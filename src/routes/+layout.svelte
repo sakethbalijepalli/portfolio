@@ -3,7 +3,6 @@
   import Nav from '$lib/components/Nav.svelte';
   import Footer from '$lib/components/Footer.svelte';
 
-  // theme init: prefer saved theme else prefers-color-scheme
   let ready = false;
   if (typeof localStorage !== 'undefined') {
     const saved = localStorage.getItem('theme');

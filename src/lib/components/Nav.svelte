@@ -13,7 +13,7 @@
       <a href="#work" class="hover:underline">Work</a>
       <a href="#projects" class="hover:underline">Projects</a>
       <a href="#skills" class="hover:underline">Skills</a>
-      <a href="#writing" class="hover:underline">Writing</a>
+      <a href="#blog" class="hover:underline">Blog</a>
       <a href="#contact" class="hover:underline">Contact</a>
       <ThemeToggle />
     </nav>
@@ -25,7 +25,7 @@
       <a href="#work" on:click={() => (open = false)}>Work</a>
       <a href="#projects" on:click={() => (open = false)}>Projects</a>
       <a href="#skills" on:click={() => (open = false)}>Skills</a>
-      <a href="#writing" on:click={() => (open = false)}>Writing</a>
+      <a href="#blog" on:click={() => (open = false)}>Blog</a>
       <a href="#contact" on:click={() => (open = false)}>Contact</a>
       <ThemeToggle />
     </div>

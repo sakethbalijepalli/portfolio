@@ -64,9 +64,7 @@
         const formElement = e.target as HTMLFormElement;
         const formDataObj = new FormData(formElement);
 
-        // Add the access key specifically
         const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY;
-        console.log("Debug: Access Key is", accessKey ? "Present" : "Missing");
 
         if (accessKey) {
             formDataObj.append("access_key", accessKey);
@@ -80,14 +78,12 @@
             return;
         }
 
-        // Optional: Custom Subject
         formDataObj.append(
             "subject",
             `New Message from Portfolio: ${formData.name}`,
         );
 
         try {
-            // Web3Forms works best with FormData sent directly (no JSON stringify, no manual Content-Type)
             const response = await fetch("https://api.web3forms.com/submit", {
                 method: "POST",
                 headers: {

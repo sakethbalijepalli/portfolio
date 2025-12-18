@@ -15,6 +15,7 @@
     import Textarea from "./ui/textarea.svelte";
     import { myData } from "$lib/data/myData";
     import { toast } from "$lib/stores/toaster.store";
+    import { PUBLIC_WEB3FORMS_ACCESS_KEY } from "$env/static/public";
 
     let formData = {
         name: "",
@@ -64,7 +65,7 @@
         const formElement = e.target as HTMLFormElement;
         const formDataObj = new FormData(formElement);
 
-        const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY;
+        const accessKey = PUBLIC_WEB3FORMS_ACCESS_KEY;
 
         if (accessKey) {
             formDataObj.append("access_key", accessKey);

@@ -11,39 +11,44 @@
   import Contact from "$lib/components/Contact.svelte";
   import Footer from "$lib/components/Footer.svelte";
   import Toaster from "$lib/components/ui/toaster.svelte";
-  import LazySection from "$lib/components/ui/lazy-section.svelte";
 </script>
 
 <div class="App">
   <Header />
   <Hero />
-  <LazySection>
-    <About />
-  </LazySection>
-  <LazySection>
+  <About />
+
+  <div class="lazy-render">
     <Experience />
-  </LazySection>
-  <LazySection>
+  </div>
+
+  <div class="lazy-render">
     <Projects />
-  </LazySection>
-  <LazySection>
+  </div>
+
+  <div class="lazy-render">
     <Skills />
-  </LazySection>
-  <LazySection>
+  </div>
+
+  <div class="lazy-render">
     <TechStack />
-  </LazySection>
-  <LazySection>
+  </div>
+
+  <div class="lazy-render">
     <Certifications />
-  </LazySection>
-  <LazySection>
+  </div>
+
+  <div class="lazy-render">
     <Blog />
-  </LazySection>
-  <LazySection>
+  </div>
+
+  <div class="lazy-render">
     <Contact />
-  </LazySection>
-  <LazySection>
+  </div>
+
+  <div class="lazy-render">
     <Footer />
-  </LazySection>
+  </div>
   <Toaster />
 </div>
 

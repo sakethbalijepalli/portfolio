@@ -15,7 +15,7 @@
             icon: Rocket,
             title: "Performance First",
             description:
-                "Optimizing systems from 30s to 8s latency, one microservice at a time",
+                "Optimizing systems to reduce latency, one microservice at a time",
         },
         {
             icon: Users,
@@ -48,6 +48,8 @@
                     <img
                         src="/portrait.jpeg"
                         alt="Saketh Balijepalli"
+                        loading="lazy"
+                        decoding="async"
                         class="w-full h-full object-cover transform transition duration-500 group-hover:scale-110"
                     />
                 </div>

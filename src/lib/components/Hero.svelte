@@ -12,35 +12,10 @@
   import Button from "./ui/button.svelte";
   import { myData } from "$lib/data/myData";
 
-  let displayedText = "";
-  let isDeleting = false;
-  let isTypingComplete = false;
-
-  const fullText = `Hi, I'm ${myData.profile.name}.`;
-
-  function handleTyping() {
-    if (isDeleting) {
-      displayedText = fullText.substring(0, displayedText.length - 1);
-    } else {
-      displayedText = fullText.substring(0, displayedText.length + 1);
-    }
-
-    let typeSpeed = isDeleting ? 50 : 100;
-
-    if (!isDeleting && displayedText === fullText) {
-      isTypingComplete = true;
-      typeSpeed = 2000;
-      isDeleting = true;
-    } else if (isDeleting && displayedText === "") {
-      isDeleting = false;
-      typeSpeed = 500;
-    }
-
-    setTimeout(handleTyping, typeSpeed);
-  }
+  let isLoaded = true;
 
   onMount(() => {
-    handleTyping();
+    isLoaded = true;
   });
 
   function scrollToSection(id: string) {
@@ -63,14 +38,14 @@
             class="bg-[#151518] border border-[#10b981]/20 rounded-lg px-4 py-2 font-mono text-sm text-[#10b981] min-h-[40px] flex items-center"
           >
             <span class="text-[#a1a1aa] mr-2">$</span>
-            <span class="whitespace-pre">{displayedText}</span>
-            <span class="animate-pulse ml-1 inline-block w-2 h-4 bg-[#10b981]"
-            ></span>
+            <div class="typing-effect">
+              Hi, I'm {myData.profile.name}.
+            </div>
           </div>
         </div>
 
         <div
-          class={`space-y-4 transition-opacity duration-500 ${isTypingComplete ? "opacity-100" : "opacity-0"}`}
+          class={`space-y-4 transition-all duration-700 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 invisible"}`}
         >
           <h2 class="text-2xl md:text-3xl text-[#e5e5e7] font-semibold">
             {myData.profile.title}
@@ -143,7 +118,7 @@
       </div>
 
       <div
-        class={`transition-opacity duration-500 delay-300 ${isTypingComplete ? "opacity-100" : "opacity-0"}`}
+        class={`transition-all duration-700 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 invisible"}`}
       >
         <div
           class="bg-[#1e1e1e] rounded-lg border border-[#2d2d2d] overflow-hidden shadow-2xl"
@@ -210,3 +185,38 @@
     <ChevronDown size={32} />
   </button>
 </section>
+
+<style>
+  .typing-effect {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 8px solid #10b981;
+    width: 0;
+    /* 
+       Steps calc: approx 27 chars. 
+       If typing happens in 70% of time: 
+       Total steps ~ 27 / 0.7 = ~39 steps.
+    */
+    animation:
+      typing 3.5s steps(40, end) infinite alternate,
+      blink 1s step-end infinite;
+  }
+
+  @keyframes typing {
+    0% {
+      width: 0;
+    }
+    70% {
+      width: 100%;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+
+  @keyframes blink {
+    50% {
+      border-color: transparent;
+    }
+  }
+</style>

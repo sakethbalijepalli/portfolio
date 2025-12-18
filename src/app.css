@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+.lazy-render {
+  content-visibility: auto;
+  contain-intrinsic-size: 1000px;
+  /* Approximate height of a section */
+}
+
+
 @layer base {
   :root {
     --background: 240 10% 3.9%;
@@ -10,7 +17,8 @@
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 159 84% 39%; /* #10b981 */
+    --primary: 159 84% 39%;
+    /* #10b981 */
     --primary-foreground: 144 100% 11%;
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
@@ -40,20 +48,24 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code, pre {
+code,
+pre {
   font-family: 'JetBrains Mono', monospace;
 }
 
 ::-webkit-scrollbar {
   width: 10px;
 }
+
 ::-webkit-scrollbar-track {
   background: #0a0a0b;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #10b981;
   border-radius: 5px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: #059669;
 }

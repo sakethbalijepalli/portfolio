@@ -15,6 +15,7 @@
     import Textarea from "./ui/textarea.svelte";
     import { myData } from "$lib/data/myData";
     import { toast } from "$lib/stores/toaster.store";
+    import { PUBLIC_WEB3FORMS_ACCESS_KEY } from "$env/static/public";
 
     let formData = {
         name: "",
@@ -55,13 +56,74 @@
         },
     ];
 
-    function handleSubmit(e: Event) {
-        // e.preventDefault() is handled by on:submit|preventDefault directive
-        toast({
-            title: "Message Sent!",
-            description: "Thanks for reaching out. I'll get back to you soon!",
-        });
-        formData = { name: "", email: "", message: "" };
+    let isSubmitting = false;
+
+    async function handleSubmit(e: Event) {
+        e.preventDefault();
+        isSubmitting = true;
+
+        const formElement = e.target as HTMLFormElement;
+        const formDataObj = new FormData(formElement);
+
+        // Add the access key specifically
+        const accessKey = PUBLIC_WEB3FORMS_ACCESS_KEY;
+        console.log("Debug: Access Key is", accessKey ? "Present" : "Missing");
+
+        if (accessKey) {
+            formDataObj.append("access_key", accessKey);
+        } else {
+            toast({
+                title: "Configuration Error",
+                description: "Access Key is missing. Check .env file.",
+                variant: "destructive",
+            });
+            isSubmitting = false;
+            return;
+        }
+
+        // Optional: Custom Subject
+        formDataObj.append(
+            "subject",
+            `New Message from Portfolio: ${formData.name}`,
+        );
+
+        try {
+            // Web3Forms works best with FormData sent directly (no JSON stringify, no manual Content-Type)
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                },
+                body: formDataObj,
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                toast({
+                    title: "Message Sent!",
+                    description:
+                        "Thanks for reaching out. I'll get back to you soon!",
+                });
+                formData = { name: "", email: "", message: "" };
+            } else {
+                toast({
+                    title: "Error",
+                    description:
+                        result.message ||
+                        "Something went wrong. Please try again.",
+                    variant: "destructive",
+                });
+            }
+        } catch (error) {
+            toast({
+                title: "Error",
+                description: "Failed to send message. Please try again later.",
+                variant: "destructive",
+            });
+        } finally {
+            isSubmitting = false;
+        }
     }
 </script>
 
@@ -134,6 +196,7 @@
             <Card class="bg-[#151518] border-[#2d2d2d]">
                 <CardContent class="p-6">
                     <form
+                        method="POST"
                         on:submit|preventDefault={handleSubmit}
                         class="space-y-4"
                     >
@@ -192,10 +255,16 @@
 
                         <Button
                             type="submit"
-                            class="w-full bg-[#10b981] hover:bg-[#059669] text-white"
+                            disabled={isSubmitting}
+                            class="w-full bg-[#10b981] hover:bg-[#059669] text-white disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                            <Send size={16} class="mr-2" />
-                            Send Message
+                            {#if isSubmitting}
+                                <span class="animate-spin mr-2">⏳</span>
+                                Sending...
+                            {:else}
+                                <Send size={16} class="mr-2" />
+                                Send Message
+                            {/if}
                         </Button>
                     </form>
                 </CardContent>

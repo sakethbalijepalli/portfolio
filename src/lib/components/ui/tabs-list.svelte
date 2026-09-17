@@ -4,7 +4,7 @@
 </script>
 
 <div
-    class={`inline-flex h-9 items-center justify-center rounded-lg bg-[#151518] p-1 text-[#71717a] ${className || ""}`}
+    class={`inline-flex h-10 items-center justify-center rounded-sm border border-[#3D3527] bg-[#191510] p-1 text-[#9C917C] ${className || ""}`}
 >
     <slot />
 </div>

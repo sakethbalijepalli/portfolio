@@ -11,7 +11,7 @@
 
 {#if $activeValue === value}
     <div
-        class={`mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981] focus-visible:ring-offset-2 ${className || ""}`}
+        class={`mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D9A441] focus-visible:ring-offset-2 ${className || ""}`}
     >
         <slot />
     </div>

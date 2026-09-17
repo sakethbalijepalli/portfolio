@@ -2,7 +2,7 @@ export const myData = {
     profile: {
         name: "Saketh Balijepalli",
         title: "Software Engineer",
-        tagline: "Shipping features end-to-end, keeping legacy systems stable, and making deployments boring.",
+        tagline: "I build backend systems that hold up under real load. I own them end to end, from architecture to the pager.",
         location: "Based in India • open to remote / hybrid",
         email: "saketh@icloud.com",
         github: "https://github.com/sakethbalijepalli",
@@ -10,14 +10,14 @@ export const myData = {
         leetcode: "https://leetcode.com/u/sakethbalijepalli/",
         instagram: "https://instagram.com/saketh_balijepalli",
         resumeUrl: "/Saketh-Balijepalli-Resume.pdf",
-        bio: "Software Engineer focused on Java, Spring Boot, and microservices. I work with Docker, CI/CD, MySQL, and I'm comfortable with JavaScript & Python too."
+        bio: "Backend engineer specializing in Java, Spring Boot, and microservices at production scale. I've taken fintech API latency from 45 seconds to under 8 across four partner integrations, and I ship what I build: Docker, CI/CD, MySQL, PostgreSQL, with Go and Python when the problem calls for it."
     },
     experiences: [
         {
             id: 1,
             title: "Freelance",
             company: "Self-Employed",
-            duration: "2024 — 2025",
+            duration: "2024 — Present",
             type: "Part-time",
             description: [
                 "Developed and deployed custom websites and web applications.",
@@ -67,33 +67,62 @@ export const myData = {
                 "Features Human-in-the-Loop design allowing user feedback at each stage of the workflow."
             ],
             technologies: ["Python", "Google ADK", "Vertex AI", "Google Cloud Run"],
-            githubUrl: "https://github.com/sakethbalijepalli/google-agents",
+            githubUrl: "https://github.com/sakethbalijepalli/multi-agent-orchestration-adk/tree/main/dance_agent_system",
             liveUrl: null,
             status: "Completed"
         },
         {
             id: 2,
-            title: "Mini E-Commerce (Full Stack)",
-            description: "Spring Boot + React MVP with product catalog, search, cart, and checkout.",
+            title: "SpaceBook",
+            description: "A two-sided marketplace for hourly studio and rehearsal-space rentals in India, built for UPI payments, WhatsApp/phone OTP, and city-tier targeting.",
             highlights: [
-                "REST APIs with pagination; MySQL schema for products, carts, orders.",
-                "Session-based cart; Axios front-end; Docker Compose for MySQL + Adminer."
+                "Spring Boot microservices (Auth, Listing, Booking, Notification) behind a BFF, with a Next.js frontend.",
+                "PostgreSQL for storage and Redis for slot-availability caching and sessions.",
+                "Razorpay for UPI/card payments and Firebase phone-OTP authentication."
             ],
-            technologies: ["Spring Boot", "React", "MySQL", "Docker", "REST API"],
-            githubUrl: "#",
+            technologies: ["Spring Boot", "Java", "Next.js", "PostgreSQL", "Redis", "Razorpay"],
+            githubUrl: "https://github.com/sakethbalijepalli/SpaceBook",
             liveUrl: null,
             status: "In Development"
         },
         {
             id: 3,
-            title: "xlsx to json",
-            description: "Reads Excel sheets, has a strict validation for each cell in a sheet, and returns structured JSON responses.",
+            title: "Movie Reservation System",
+            description: "A backend service for browsing movies, scheduling showtimes, and reserving seats, built to work through real-world concurrency control and auth design.",
             highlights: [
-                "Spring Boot + Apache POI; schema mapping, type checks, required/enum constraints.",
-                "Per-row error reporting (line + column) and clean success payloads for downstream services."
+                "Seat reservation uses pessimistic row-level locking plus a re-verification check under that lock, backed by a DB-level unique constraint against double-booking.",
+                "JWT auth with short-lived access tokens and long-lived refresh tokens, plus admin/regular role distinction.",
+                "Reservations start as a PENDING hold with an expiry; a scheduled job auto-expires abandoned holds."
             ],
-            technologies: ["Spring Boot", "Apache POI", "Java"],
-            githubUrl: "https://github.com/sakethbalijepalli/XlsxToJson",
+            technologies: ["Java 17", "Spring Boot", "PostgreSQL", "Spring Security", "JWT"],
+            githubUrl: "https://github.com/sakethbalijepalli/moviereservationsystem",
+            liveUrl: null,
+            status: "Completed"
+        },
+        {
+            id: 4,
+            title: "Spring AI Fallback Service",
+            description: "A Spring Boot service that chains multiple generative-AI providers with automatic fallback and model rotation for high availability.",
+            highlights: [
+                "Chat fallback chain: Google Gemini → OpenRouter (rotating free models) → Ollama, degrading gracefully if a provider is unconfigured.",
+                "Image-generation fallback across Pollinations, Hugging Face (Flux.1-schnell), Gemini, and OpenRouter.",
+                "REST endpoints for chat, search-grounded chat, and direct image generation."
+            ],
+            technologies: ["Java", "Spring Boot", "Spring AI"],
+            githubUrl: "https://github.com/sakethbalijepalli/SpringAI",
+            liveUrl: null,
+            status: "Completed"
+        },
+        {
+            id: 5,
+            title: "URL Shortener (Go)",
+            description: "A URL shortener REST API written in Go.",
+            highlights: [
+                "Built with Gin; endpoints to create a short URL and redirect from it.",
+                "Clean separation between handler, shortening logic, and storage layers."
+            ],
+            technologies: ["Go", "Gin", "REST API"],
+            githubUrl: "https://github.com/sakethbalijepalli/go-url-shortener",
             liveUrl: null,
             status: "Completed"
         }
@@ -129,19 +158,26 @@ export const myData = {
         { name: "Java", category: "Language" },
         { name: "Python", category: "Language" },
         { name: "TypeScript", category: "Language" },
+        { name: "Go", category: "Language" },
         { name: "React", category: "Framework" },
         { name: "Spring Boot", category: "Framework" },
         { name: "Docker", category: "Platform" },
         { name: "Kubernetes", category: "Platform" },
         { name: "AWS", category: "Cloud" },
+        { name: "GCP", category: "Cloud" },
         { name: "Jenkins", category: "CI/CD" },
         { name: "Kafka", category: "Messaging" },
         { name: "MySQL", category: "Database" },
+        { name: "PostgreSQL", category: "Database" },
         { name: "Redis", category: "Cache" },
         { name: "Git", category: "Version Control" },
         { name: "BitBucket", category: "Version Control" },
         { name: "Gradle", category: "Build Tool" },
-        { name: "Maven", category: "Build Tool" }
+        { name: "Maven", category: "Build Tool" },
+        { name: "CrewAI", category: "AI & Agents" },
+        { name: "LangGraph", category: "AI & Agents" },
+        { name: "LangChain", category: "AI & Agents" },
+        { name: "Google ADK", category: "AI & Agents" }
     ],
     certifications: [
         {
@@ -151,13 +187,6 @@ export const myData = {
             date: "2025",
             status: "Completed",
             link: "https://www.kaggle.com/certification/badges/sakethbalijepalli/105"
-        },
-        {
-            id: 2,
-            title: "Meta Professional Frontend Developer",
-            issuer: "Meta",
-            date: "Expected 2026 Jan",
-            status: "In Progress"
         }
     ],
     blogPosts: [

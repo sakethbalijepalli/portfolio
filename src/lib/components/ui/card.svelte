@@ -4,7 +4,7 @@
 </script>
 
 <div
-    class={`rounded-xl border border-[#2d2d2d] bg-[#151518] text-[#e5e5e7] shadow-sm ${className || ""}`}
+    class={`rounded-sm border border-[#3D3527] bg-[#221D16] text-[#EDE6D6] ${className || ""}`}
 >
     <slot />
 </div>

@@ -8,10 +8,8 @@
         Zap,
         Boxes,
         Hammer,
+        Bot,
     } from "lucide-svelte";
-    import Card from "./ui/card.svelte";
-    import CardContent from "./ui/card-content.svelte";
-    import Badge from "./ui/badge.svelte";
     import { myData } from "$lib/data/myData";
 
     function getIconForCategory(category: string) {
@@ -26,11 +24,11 @@
             Cache: Zap,
             "Version Control": GitBranch,
             "Build Tool": Hammer,
+            "AI & Agents": Bot,
         };
         return iconMap[category] || Code2;
     }
 
-    // Group stack
     const groupedStack = myData.techStack.reduce((acc: any, tech) => {
         if (!acc[tech.category]) {
             acc[tech.category] = [];
@@ -40,49 +38,40 @@
     }, {});
 </script>
 
-<section id="techstack" class="py-20 bg-[#0a0a0b]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-[#e5e5e7] mb-4">
-                Tech <span class="text-[#10b981]">Stack</span>
-            </h2>
-            <div class="w-20 h-1 bg-[#10b981] mx-auto"></div>
-            <p class="text-[#a1a1aa] mt-4">
-                Technologies I work with regularly
-            </p>
-        </div>
+<section id="techstack" class="py-16 border-t border-[#3D3527]">
+    <div class="mb-12">
+        <h2 class="font-display text-3xl md:text-4xl text-[#EDE6D6] mb-3 flex items-baseline gap-3">
+            <span class="font-mono text-lg text-[#D9A441]">05</span>
+            Tech stack
+        </h2>
+        <p class="text-[#9C917C]">
+            Technologies I work with regularly.
+        </p>
+    </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {#each Object.entries(groupedStack) as [category, techs] (category)}
-                <Card
-                    class="bg-[#151518] border-[#2d2d2d] hover:border-[#10b981]/50 transition-all duration-300"
-                >
-                    <CardContent class="p-6 space-y-4">
-                        <div class="flex items-center gap-3">
-                            <div class="p-2 bg-[#10b981]/10 rounded-lg">
-                                <svelte:component
-                                    this={getIconForCategory(category)}
-                                    size={20}
-                                    class="text-[#10b981]"
-                                />
-                            </div>
-                            <h3 class="text-lg font-semibold text-[#e5e5e7]">
-                                {category}
-                            </h3>
-                        </div>
-                        <div class="flex flex-wrap gap-2">
-                            {#each techs as tech (tech.name)}
-                                <Badge
-                                    variant="outline"
-                                    class="border-[#2d2d2d] text-[#a1a1aa] hover:border-[#10b981] hover:text-[#10b981] transition-colors"
-                                >
-                                    {tech.name}
-                                </Badge>
-                            {/each}
-                        </div>
-                    </CardContent>
-                </Card>
-            {/each}
-        </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 border-t border-l border-[#3D3527]">
+        {#each Object.entries(groupedStack) as [category, techs] (category)}
+            <div class="p-6 border-r border-b border-[#3D3527]">
+                <div class="flex items-center gap-2.5 mb-4">
+                    <svelte:component
+                        this={getIconForCategory(category)}
+                        size={17}
+                        class="text-[#D9A441]"
+                    />
+                    <h3 class="text-sm font-semibold text-[#EDE6D6] tracking-wide">
+                        {category}
+                    </h3>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    {#each techs as tech (tech.name)}
+                        <span
+                            class="border border-[#3D3527] text-[#9C917C] hover:border-[#D9A441] hover:text-[#D9A441] transition-colors text-xs font-mono px-2 py-1"
+                        >
+                            {tech.name}
+                        </span>
+                    {/each}
+                </div>
+            </div>
+        {/each}
     </div>
 </section>

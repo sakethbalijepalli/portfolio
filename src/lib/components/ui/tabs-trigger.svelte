@@ -8,7 +8,6 @@
 
     const activeValue = getContext<Writable<string>>("tabs");
 
-    // Helper to update store
     function handleClick() {
         $activeValue = value;
     }
@@ -17,10 +16,10 @@
 <button
     type="button"
     on:click={handleClick}
-    class={`inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10b981] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 ${
+    class={`inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#D9A441] disabled:pointer-events-none disabled:opacity-50 ${
         $activeValue === value
-            ? "bg-[#10b981] text-white shadow"
-            : "text-[#71717a] hover:text-[#e5e5e7]"
+            ? "bg-[#D9A441] text-[#191510]"
+            : "text-[#9C917C] hover:text-[#EDE6D6]"
     } ${className || ""}`}
 >
     <slot />

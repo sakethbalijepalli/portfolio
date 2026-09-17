@@ -4,7 +4,8 @@
     export let skill: { name: string; level: number };
     export let delay: number;
 
-    let width = 0;
+    const totalTicks = 20;
+    let filled = 0;
     let isVisible = false;
     let element: HTMLElement;
 
@@ -13,7 +14,7 @@
             ([entry]) => {
                 if (entry.isIntersecting) {
                     isVisible = true;
-                    observer.disconnect(); // Stop observing once visible
+                    observer.disconnect();
                 }
             },
             { threshold: 0.1 },
@@ -29,23 +30,23 @@
     });
 
     $: if (isVisible) {
-        const timer = setTimeout(() => {
-            width = skill.level;
+        setTimeout(() => {
+            filled = Math.round((skill.level / 100) * totalTicks);
         }, delay);
-        // Cleanup is tricky in reactive statement, but this runs once when isVisible becomes true.
-        // Ideally we should manage cleanup if destroyed.
     }
 </script>
 
 <div bind:this={element} class="space-y-2">
-    <div class="flex justify-between items-center">
-        <span class="text-[#e5e5e7] font-medium">{skill.name}</span>
-        <span class="text-[#10b981] font-mono text-sm">{skill.level}%</span>
+    <div class="flex justify-between items-baseline">
+        <span class="text-[#EDE6D6] font-medium text-sm">{skill.name}</span>
+        <span class="text-[#D9A441] font-mono text-xs">{skill.level}%</span>
     </div>
-    <div class="h-2 bg-[#1e1e1e] rounded-full overflow-hidden">
-        <div
-            class="h-full bg-gradient-to-r from-[#10b981] to-[#059669] rounded-full transition-all duration-1000 ease-out"
-            style={`width: ${width}%`}
-        ></div>
+    <div class="flex gap-[3px]">
+        {#each Array(totalTicks) as _, i}
+            <div
+                class={`h-3.5 flex-1 transition-colors duration-300 ${i < filled ? "bg-[#D9A441]" : "bg-[#2A2319]"}`}
+                style={`transition-delay: ${i * 18}ms`}
+            ></div>
+        {/each}
     </div>
 </div>

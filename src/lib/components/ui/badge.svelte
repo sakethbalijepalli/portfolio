@@ -5,16 +5,16 @@
     export { className as class };
 
     const baseStyles =
-        "inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-[#10b981] focus:ring-offset-2";
+        "inline-flex items-center rounded-sm border px-2 py-0.5 text-xs font-medium font-mono transition-colors focus:outline-none focus:ring-1 focus:ring-[#D9A441]";
 
     const variants = {
         default:
-            "border-transparent bg-[#10b981] text-white shadow hover:bg-[#059669]",
+            "border-transparent bg-[#D9A441] text-[#191510]",
         secondary:
-            "border-transparent bg-[#151518] text-[#e5e5e7] hover:bg-[#151518]/80",
+            "border-transparent bg-[#2A2319] text-[#EDE6D6]",
         destructive:
-            "border-transparent bg-red-500 text-white shadow hover:bg-red-500/80",
-        outline: "text-[#e5e5e7] border-[#2d2d2d]",
+            "border-transparent bg-red-500/90 text-white",
+        outline: "text-[#9C917C] border-[#3D3527] bg-transparent",
     };
 
     $: styles = `${baseStyles} ${variants[variant]} ${className || ""}`;

@@ -1,7 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { Menu, X } from 'lucide-svelte';
-  import Button from './ui/button.svelte';
 
   let isScrolled = false;
   let isMobileMenuOpen = false;
@@ -34,15 +33,16 @@
 </script>
 
 <header
-  class={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-    isScrolled ? 'bg-[#0a0a0b]/95 backdrop-blur-md shadow-lg border-b border-[#2d2d2d]' : 'bg-transparent'
+  class={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+    isScrolled ? 'bg-[#191510]/95 backdrop-blur-md border-b border-[#3D3527]' : 'bg-transparent border-b border-transparent'
   }`}
 >
-  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
       <button
         on:click={() => scrollToSection('hero')}
-        class="text-xl font-bold text-[#10b981] hover:text-[#059669] transition-colors"
+        class="w-9 h-9 border border-[#D9A441] text-[#D9A441] font-display font-semibold text-sm flex items-center justify-center hover:bg-[#D9A441] hover:text-[#191510] transition-colors"
+        aria-label="Back to top"
       >
         SB
       </button>
@@ -51,22 +51,23 @@
         {#each navItems as item (item.id)}
           <button
             on:click={() => scrollToSection(item.id)}
-            class="text-[#a1a1aa] hover:text-[#10b981] transition-colors text-sm font-medium"
+            class="text-[#9C917C] hover:text-[#D9A441] transition-colors text-sm font-medium"
           >
             {item.label}
           </button>
         {/each}
-        <Button
+        <button
           on:click={() => scrollToSection('contact')}
-          class="bg-[#10b981] hover:bg-[#059669] text-white"
+          class="border border-[#3D3527] hover:border-[#D9A441] hover:text-[#D9A441] text-[#EDE6D6] text-sm font-medium px-4 py-2 transition-colors"
         >
           Get in touch
-        </Button>
+        </button>
       </div>
 
       <button
-        class="md:hidden text-[#e5e5e7]"
+        class="md:hidden text-[#EDE6D6]"
         on:click={() => (isMobileMenuOpen = !isMobileMenuOpen)}
+        aria-label="Toggle menu"
       >
         {#if isMobileMenuOpen}
           <X size={24} />
@@ -77,21 +78,21 @@
     </div>
 
     {#if isMobileMenuOpen}
-      <div class="md:hidden py-4 space-y-3 bg-[#151518] rounded-lg mt-2 px-4 border border-[#2d2d2d]">
+      <div class="md:hidden py-4 space-y-1 bg-[#221D16] border border-[#3D3527] mt-2 px-4 mb-4">
         {#each navItems as item (item.id)}
           <button
             on:click={() => scrollToSection(item.id)}
-            class="block w-full text-left text-[#a1a1aa] hover:text-[#10b981] transition-colors text-sm font-medium py-2"
+            class="block w-full text-left text-[#9C917C] hover:text-[#D9A441] transition-colors text-sm font-medium py-2 border-b border-[#3D3527] last:border-0"
           >
             {item.label}
           </button>
         {/each}
-        <Button
+        <button
           on:click={() => scrollToSection('contact')}
-          class="w-full bg-[#10b981] hover:bg-[#059669] text-white"
+          class="w-full text-left border border-[#3D3527] hover:border-[#D9A441] hover:text-[#D9A441] text-[#EDE6D6] text-sm font-medium px-4 py-2 mt-3 transition-colors"
         >
           Get in touch
-        </Button>
+        </button>
       </div>
     {/if}
   </nav>

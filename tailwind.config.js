@@ -44,7 +44,9 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ['var(--font-sans)', 'sans-serif'],
+        sans: ['Archivo', 'sans-serif'],
+        display: ['"Zilla Slab"', 'Georgia', 'serif'],
+        mono: ['"Fragment Mono"', 'monospace'],
       }
     }
   },

@@ -8,8 +8,6 @@
         Instagram,
         Send,
     } from "lucide-svelte";
-    import Card from "./ui/card.svelte";
-    import CardContent from "./ui/card-content.svelte";
     import Button from "./ui/button.svelte";
     import Input from "./ui/input.svelte";
     import Textarea from "./ui/textarea.svelte";
@@ -71,8 +69,8 @@
             formDataObj.append("access_key", accessKey);
         } else {
             toast({
-                title: "Configuration Error",
-                description: "Access Key is missing. Check .env file.",
+                title: "Configuration error",
+                description: "Access key is missing. Check .env file.",
                 variant: "destructive",
             });
             isSubmitting = false;
@@ -81,7 +79,7 @@
 
         formDataObj.append(
             "subject",
-            `New Message from Portfolio: ${formData.name}`,
+            `New message from portfolio: ${formData.name}`,
         );
 
         try {
@@ -97,23 +95,22 @@
 
             if (result.success) {
                 toast({
-                    title: "Message Sent!",
+                    title: "Message sent",
                     description:
-                        "Thanks for reaching out. I'll get back to you soon!",
+                        "Thanks for reaching out. I'll get back to you soon.",
                 });
                 formData = { name: "", email: "", message: "" };
             } else {
                 toast({
-                    title: "Error",
+                    title: "Something went wrong",
                     description:
-                        result.message ||
-                        "Something went wrong. Please try again.",
+                        result.message || "Please try again.",
                     variant: "destructive",
                 });
             }
         } catch (error) {
             toast({
-                title: "Error",
+                title: "Something went wrong",
                 description: "Failed to send message. Please try again later.",
                 variant: "destructive",
             });
@@ -123,148 +120,131 @@
     }
 </script>
 
-```
-<section id="contact" class="py-20 bg-[#0f0f10]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-[#e5e5e7] mb-4">
-                Get In <span class="text-[#10b981]">Touch</span>
-            </h2>
-            <div class="w-20 h-1 bg-[#10b981] mx-auto"></div>
-            <p class="text-[#a1a1aa] mt-4">
-                Interested in working together or just want to say hi?
-            </p>
-        </div>
+<section id="contact" class="py-16 border-t border-[#3D3527]">
+    <div class="mb-12">
+        <h2 class="font-display text-3xl md:text-4xl text-[#EDE6D6] mb-3 flex items-baseline gap-3">
+            <span class="font-mono text-lg text-[#D9A441]">08</span>
+            Get in touch
+        </h2>
+        <p class="text-[#9C917C]">
+            Interested in working together or just want to say hi?
+        </p>
+    </div>
 
-        <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-10 md:gap-16">
             <div class="space-y-6">
                 <div>
-                    <h3 class="text-2xl font-semibold text-[#e5e5e7] mb-4">
-                        Let's Connect
+                    <h3 class="text-xl font-semibold text-[#EDE6D6] mb-3">
+                        Let's connect
                     </h3>
-                    <p class="text-[#a1a1aa] leading-relaxed mb-6">
+                    <p class="text-[#9C917C] leading-relaxed mb-4">
                         I'm always open to discussing new opportunities,
                         collaborating on interesting projects, or just having a
                         chat about technology and software engineering.
                     </p>
-                    <div class="flex items-center gap-2 text-[#a1a1aa]">
-                        <MapPin size={18} class="text-[#10b981]" />
+                    <div class="flex items-center gap-2 text-[#9C917C] text-sm">
+                        <MapPin size={16} class="text-[#D9A441]" />
                         <span>{myData.profile.location}</span>
                     </div>
                 </div>
 
-                <div class="space-y-4">
+                <div class="border-t border-[#3D3527]">
                     {#each contactLinks as link}
                         <a
                             href={link.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="block"
+                            class="group flex items-center gap-4 py-4 border-b border-[#3D3527] hover:bg-[#221D16] transition-colors -mx-2 px-2"
                         >
-                            <Card
-                                class="bg-[#151518] border-[#2d2d2d] hover:border-[#10b981]/50 transition-all duration-300 hover:-translate-y-1"
-                            >
-                                <CardContent
-                                    class="p-4 flex items-center gap-4"
-                                >
-                                    <div class="p-3 bg-[#10b981]/10 rounded-lg">
-                                        <svelte:component
-                                            this={link.icon}
-                                            size={20}
-                                            class="text-[#10b981]"
-                                        />
-                                    </div>
-                                    <div>
-                                        <p class="text-sm text-[#a1a1aa]">
-                                            {link.label}
-                                        </p>
-                                        <p class="text-[#e5e5e7] font-medium">
-                                            {link.value}
-                                        </p>
-                                    </div>
-                                </CardContent>
-                            </Card>
+                            <svelte:component
+                                this={link.icon}
+                                size={18}
+                                class="text-[#D9A441] shrink-0"
+                            />
+                            <div>
+                                <p class="text-xs text-[#7A7060] font-mono">
+                                    {link.label}
+                                </p>
+                                <p class="text-[#EDE6D6] group-hover:text-[#D9A441] transition-colors">
+                                    {link.value}
+                                </p>
+                            </div>
                         </a>
                     {/each}
                 </div>
             </div>
 
-            <Card class="bg-[#151518] border-[#2d2d2d]">
-                <CardContent class="p-6">
-                    <form
-                        method="POST"
-                        on:submit|preventDefault={handleSubmit}
-                        class="space-y-4"
-                    >
-                        <div>
-                            <label
-                                for="name"
-                                class="block text-sm font-medium text-[#e5e5e7] mb-2"
-                            >
-                                Name
-                            </label>
-                            <Input
-                                id="name"
-                                name="name"
-                                bind:value={formData.name}
-                                placeholder="Your name"
-                                required
-                                class="bg-[#0a0a0b] border-[#2d2d2d] text-[#e5e5e7] focus:border-[#10b981]"
-                            />
-                        </div>
-
-                        <div>
-                            <label
-                                for="email"
-                                class="block text-sm font-medium text-[#e5e5e7] mb-2"
-                            >
-                                Email
-                            </label>
-                            <Input
-                                id="email"
-                                name="email"
-                                type="email"
-                                bind:value={formData.email}
-                                placeholder="your.email@example.com"
-                                required
-                                class="bg-[#0a0a0b] border-[#2d2d2d] text-[#e5e5e7] focus:border-[#10b981]"
-                            />
-                        </div>
-
-                        <div>
-                            <label
-                                for="message"
-                                class="block text-sm font-medium text-[#e5e5e7] mb-2"
-                            >
-                                Message
-                            </label>
-                            <Textarea
-                                id="message"
-                                name="message"
-                                bind:value={formData.message}
-                                placeholder="Your message..."
-                                required
-                                rows={6}
-                                class="bg-[#0a0a0b] border-[#2d2d2d] text-[#e5e5e7] focus:border-[#10b981] resize-none"
-                            />
-                        </div>
-
-                        <Button
-                            type="submit"
-                            disabled={isSubmitting}
-                            class="w-full bg-[#10b981] hover:bg-[#059669] text-white disabled:opacity-50 disabled:cursor-not-allowed"
+            <div class="border border-[#3D3527] p-6 md:p-8">
+                <form
+                    method="POST"
+                    on:submit|preventDefault={handleSubmit}
+                    class="space-y-4"
+                >
+                    <div>
+                        <label
+                            for="name"
+                            class="block text-sm font-medium text-[#EDE6D6] mb-2"
                         >
-                            {#if isSubmitting}
-                                <span class="animate-spin mr-2">⏳</span>
-                                Sending...
-                            {:else}
-                                <Send size={16} class="mr-2" />
-                                Send Message
-                            {/if}
-                        </Button>
-                    </form>
-                </CardContent>
-            </Card>
+                            Name
+                        </label>
+                        <Input
+                            id="name"
+                            name="name"
+                            bind:value={formData.name}
+                            placeholder="Your name"
+                            required
+                        />
+                    </div>
+
+                    <div>
+                        <label
+                            for="email"
+                            class="block text-sm font-medium text-[#EDE6D6] mb-2"
+                        >
+                            Email
+                        </label>
+                        <Input
+                            id="email"
+                            name="email"
+                            type="email"
+                            bind:value={formData.email}
+                            placeholder="your.email@example.com"
+                            required
+                        />
+                    </div>
+
+                    <div>
+                        <label
+                            for="message"
+                            class="block text-sm font-medium text-[#EDE6D6] mb-2"
+                        >
+                            Message
+                        </label>
+                        <Textarea
+                            id="message"
+                            name="message"
+                            bind:value={formData.message}
+                            placeholder="Your message..."
+                            required
+                            rows={6}
+                            class="resize-none"
+                        />
+                    </div>
+
+                    <Button
+                        type="submit"
+                        disabled={isSubmitting}
+                        class="w-full disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                        {#if isSubmitting}
+                            <span class="animate-spin mr-2">⏳</span>
+                            Sending...
+                        {:else}
+                            <Send size={16} class="mr-2" />
+                            Send message
+                        {/if}
+                    </Button>
+                </form>
+            </div>
         </div>
-    </div>
 </section>

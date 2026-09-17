@@ -1,6 +1,7 @@
 <script>
   import Header from "$lib/components/Header.svelte";
   import Hero from "$lib/components/Hero.svelte";
+  import SectionNav from "$lib/components/SectionNav.svelte";
   import About from "$lib/components/About.svelte";
   import Experience from "$lib/components/Experience.svelte";
   import Projects from "$lib/components/Projects.svelte";
@@ -16,45 +17,31 @@
 <div class="App">
   <Header />
   <Hero />
-  <About />
 
-  <div class="lazy-render">
-    <Experience />
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="lg:flex lg:gap-16 lg:items-start">
+      <SectionNav />
+
+      <div class="flex-1 min-w-0">
+        <About />
+        <Experience />
+        <Projects />
+        <Skills />
+        <TechStack />
+        <Certifications />
+        <Blog />
+        <Contact />
+      </div>
+    </div>
   </div>
 
-  <div class="lazy-render">
-    <Projects />
-  </div>
-
-  <div class="lazy-render">
-    <Skills />
-  </div>
-
-  <div class="lazy-render">
-    <TechStack />
-  </div>
-
-  <div class="lazy-render">
-    <Certifications />
-  </div>
-
-  <div class="lazy-render">
-    <Blog />
-  </div>
-
-  <div class="lazy-render">
-    <Contact />
-  </div>
-
-  <div class="lazy-render">
-    <Footer />
-  </div>
+  <Footer />
   <Toaster />
 </div>
 
 <style>
   :global(.App) {
-    background-color: #0a0a0b;
+    background-color: #191510;
     min-height: 100vh;
   }
 </style>

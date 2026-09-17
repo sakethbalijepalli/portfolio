@@ -9,13 +9,12 @@
     Code,
     Instagram,
   } from "lucide-svelte";
-  import Button from "./ui/button.svelte";
   import { myData } from "$lib/data/myData";
 
-  let isLoaded = true;
+  let mounted = false;
 
   onMount(() => {
-    isLoaded = true;
+    mounted = true;
   });
 
   function scrollToSection(id: string) {
@@ -28,195 +27,105 @@
 
 <section
   id="hero"
-  class="min-h-screen flex items-center justify-center relative bg-gradient-to-b from-[#0a0a0b] via-[#0f0f10] to-[#0a0a0b]"
+  class="min-h-screen flex items-center relative bg-[#191510]"
 >
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-32">
-    <div class="grid md:grid-cols-2 gap-12 items-center">
-      <div class="space-y-6">
-        <div class="inline-block">
-          <div
-            class="bg-[#151518] border border-[#10b981]/20 rounded-lg px-4 py-2 font-mono text-sm text-[#10b981] min-h-[40px] flex items-center"
-          >
-            <span class="text-[#a1a1aa] mr-2">$</span>
-            <div class="typing-effect">
-              Hi, I'm {myData.profile.name}.
-            </div>
-          </div>
-        </div>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pt-32 w-full">
+    <div class="space-y-6 max-w-xl">
+        <p
+          class={`font-mono text-sm text-[#D9A441] transition-all duration-700 ${mounted ? "opacity-100" : "opacity-0"}`}
+        >
+          Saketh Balijepalli / Software Engineer
+        </p>
+
+        <h1
+          class={`font-display text-4xl md:text-5xl text-[#EDE6D6] leading-[1.1] transition-all duration-700 delay-100 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}
+        >
+          {myData.profile.tagline}
+        </h1>
+
+        <p
+          class={`text-[#9C917C] leading-relaxed transition-all duration-700 delay-200 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}
+        >
+          {myData.profile.bio}
+        </p>
+
+        <p
+          class={`font-mono text-xs text-[#7A7060] tracking-wide transition-all duration-700 delay-300 ${mounted ? "opacity-100" : "opacity-0"}`}
+        >
+          {myData.profile.location}
+        </p>
 
         <div
-          class={`space-y-4 transition-all duration-700 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 invisible"}`}
+          class={`flex flex-wrap items-center gap-4 pt-2 transition-all duration-700 delay-[400ms] ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}
         >
-          <h2 class="text-2xl md:text-3xl text-[#e5e5e7] font-semibold">
-            {myData.profile.title}
-          </h2>
-          <p class="text-lg text-[#a1a1aa] leading-relaxed">
-            {myData.profile.tagline}
-          </p>
-          <p class="text-[#10b981] font-mono text-sm">
-            {myData.profile.location}
-          </p>
+          <button
+            on:click={() => scrollToSection("projects")}
+            class="bg-[#D9A441] hover:bg-[#c99537] text-[#191510] font-medium px-5 py-2.5 text-sm transition-colors"
+          >
+            View projects
+          </button>
+          <button
+            on:click={() => window.open(myData.profile.resumeUrl, "_blank")}
+            class="border border-[#3D3527] hover:border-[#D9A441] hover:text-[#D9A441] text-[#EDE6D6] font-medium px-5 py-2.5 text-sm inline-flex items-center gap-2 transition-colors"
+          >
+            <Download size={15} />
+            Resume
+          </button>
 
-          <div class="flex flex-wrap gap-4 pt-4">
-            <Button
-              on:click={() => scrollToSection("projects")}
-              class="bg-[#10b981] hover:bg-[#059669] text-white font-medium"
-            >
-              View Projects
-            </Button>
-            <Button
-              on:click={() => window.open(myData.profile.resumeUrl, "_blank")}
-              variant="outline"
-              class="border-[#10b981] text-[#10b981] hover:bg-[#10b981] hover:text-white"
-            >
-              <Download size={16} class="mr-2" />
-              Resume
-            </Button>
-          </div>
-
-          <div class="flex gap-4 pt-4">
+          <div class="flex gap-4 ml-2">
             <a
               href={myData.profile.github}
               target="_blank"
               rel="noopener noreferrer"
-              class="text-[#a1a1aa] hover:text-[#10b981] transition-colors"
+              class="text-[#9C917C] hover:text-[#D9A441] transition-colors"
+              aria-label="GitHub"
             >
-              <Github size={24} />
+              <Github size={19} />
             </a>
             <a
               href={myData.profile.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              class="text-[#a1a1aa] hover:text-[#10b981] transition-colors"
+              class="text-[#9C917C] hover:text-[#D9A441] transition-colors"
+              aria-label="LinkedIn"
             >
-              <Linkedin size={24} />
+              <Linkedin size={19} />
             </a>
             <a
               href={myData.profile.leetcode}
               target="_blank"
               rel="noopener noreferrer"
-              class="text-[#a1a1aa] hover:text-[#10b981] transition-colors"
+              class="text-[#9C917C] hover:text-[#D9A441] transition-colors"
+              aria-label="LeetCode"
             >
-              <Code size={24} />
+              <Code size={19} />
             </a>
             <a
               href={myData.profile.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              class="text-[#a1a1aa] hover:text-[#10b981] transition-colors"
+              class="text-[#9C917C] hover:text-[#D9A441] transition-colors"
+              aria-label="Instagram"
             >
-              <Instagram size={24} />
+              <Instagram size={19} />
             </a>
             <a
               href={`mailto:${myData.profile.email}`}
-              class="text-[#a1a1aa] hover:text-[#10b981] transition-colors"
+              class="text-[#9C917C] hover:text-[#D9A441] transition-colors"
+              aria-label="Email"
             >
-              <Mail size={24} />
+              <Mail size={19} />
             </a>
-          </div>
-        </div>
-      </div>
-
-      <div
-        class={`transition-all duration-700 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 invisible"}`}
-      >
-        <div
-          class="bg-[#1e1e1e] rounded-lg border border-[#2d2d2d] overflow-hidden shadow-2xl"
-        >
-          <div
-            class="bg-[#151518] px-4 py-2 flex items-center gap-2 border-b border-[#2d2d2d]"
-          >
-            <div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
-            <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
-            <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
-            <span class="ml-2 text-xs text-[#a1a1aa] font-mono"
-              >Profile.java</span
-            >
-          </div>
-          <div class="p-6 font-mono text-sm space-y-2 leading-6">
-            <div>
-              <span class="text-[#c678dd]">public class</span>
-              <span class="text-[#e5c07b]">SoftwareEngineer</span>
-              {"{"}
-            </div>
-            <div class="ml-4">
-              <span class="text-[#c678dd]">private</span>
-              <span class="text-[#e5c07b]">String</span>
-              name = <span class="text-[#98c379]">"Saketh Balijepalli"</span>;
-            </div>
-            <div class="ml-4">
-              <span class="text-[#c678dd]">private</span>
-              <span class="text-[#e5c07b]">String[]</span>
-              skills = {"{"}
-            </div>
-            <div class="ml-8">
-              <span class="text-[#98c379]">"Java"</span>,
-            </div>
-            <div class="ml-8">
-              <span class="text-[#98c379]">"Python"</span>,
-            </div>
-            <div class="ml-8">
-              <span class="text-[#98c379]">"Spring Boot"</span>,
-            </div>
-            <div class="ml-8">
-              <span class="text-[#98c379]">"Microservices"</span>,
-            </div>
-            <div class="ml-8">
-              <span class="text-[#98c379]">"Docker"</span>,
-            </div>
-            <div class="ml-8"><span class="text-[#98c379]">"AWS"</span></div>
-            <div class="ml-4">{"}"};</div>
-            <div class="ml-4">
-              <span class="text-[#c678dd]">private</span>
-              <span class="text-[#e5c07b]">boolean</span>
-              openToWork = <span class="text-[#d19a66]">true</span>;
-            </div>
-            <div>{"}"}</div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
   <button
     on:click={() => scrollToSection("about")}
-    class="absolute bottom-8 left-1/2 -translate-x-1/2 text-[#10b981] animate-bounce"
+    class="absolute bottom-8 left-1/2 -translate-x-1/2 text-[#D9A441] animate-bounce"
+    aria-label="Scroll to about section"
   >
-    <ChevronDown size={32} />
+    <ChevronDown size={26} />
   </button>
 </section>
-
-<style>
-  .typing-effect {
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 8px solid #10b981;
-    width: 0;
-    /* 
-       Steps calc: approx 27 chars. 
-       If typing happens in 70% of time: 
-       Total steps ~ 27 / 0.7 = ~39 steps.
-    */
-    animation:
-      typing 3.5s steps(40, end) infinite alternate,
-      blink 1s step-end infinite;
-  }
-
-  @keyframes typing {
-    0% {
-      width: 0;
-    }
-    70% {
-      width: 100%;
-    }
-    100% {
-      width: 100%;
-    }
-  }
-
-  @keyframes blink {
-    50% {
-      border-color: transparent;
-    }
-  }
-</style>

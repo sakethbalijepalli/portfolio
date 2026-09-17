@@ -8,6 +8,8 @@
         Instagram,
         Send,
     } from "lucide-svelte";
+    import XLogo from "./icons/XLogo.svelte";
+    import DiscordLogo from "./icons/DiscordLogo.svelte";
     import Button from "./ui/button.svelte";
     import Input from "./ui/input.svelte";
     import Textarea from "./ui/textarea.svelte";
@@ -51,6 +53,18 @@
             label: "Instagram",
             value: "instagram.com/saketh_balijepalli",
             href: myData.profile.instagram,
+        },
+        {
+            icon: XLogo,
+            label: "X",
+            value: "x.com/saketh_b98",
+            href: myData.profile.x,
+        },
+        {
+            icon: DiscordLogo,
+            label: "Discord",
+            value: "312264899843588096",
+            href: myData.profile.discord,
         },
     ];
 

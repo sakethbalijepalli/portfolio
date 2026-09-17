@@ -9,6 +9,8 @@ export const myData = {
         linkedin: "https://www.linkedin.com/in/sakethbalijepalli/",
         leetcode: "https://leetcode.com/u/sakethbalijepalli/",
         instagram: "https://instagram.com/saketh_balijepalli",
+        x: "https://x.com/saketh_b98",
+        discord: "https://discord.com/users/312264899843588096",
         resumeUrl: "/Saketh-Balijepalli-Resume.pdf",
         bio: "Backend engineer specializing in Java, Spring Boot, and microservices at production scale. I've taken fintech API latency from 45 seconds to under 8 across four partner integrations, and I ship what I build: Docker, CI/CD, MySQL, PostgreSQL, with Go and Python when the problem calls for it."
     },

@@ -1,6 +1,8 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { Github, Linkedin, Mail, Code, Instagram } from "lucide-svelte";
+  import XLogo from "./icons/XLogo.svelte";
+  import DiscordLogo from "./icons/DiscordLogo.svelte";
   import { myData } from "$lib/data/myData";
 
   const sections = [
@@ -46,6 +48,8 @@
     { icon: Linkedin, href: myData.profile.linkedin, label: "LinkedIn" },
     { icon: Code, href: myData.profile.leetcode, label: "LeetCode" },
     { icon: Instagram, href: myData.profile.instagram, label: "Instagram" },
+    { icon: XLogo, href: myData.profile.x, label: "X" },
+    { icon: DiscordLogo, href: myData.profile.discord, label: "Discord" },
     { icon: Mail, href: `mailto:${myData.profile.email}`, label: "Email" },
   ];
 </script>

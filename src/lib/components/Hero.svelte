@@ -9,6 +9,8 @@
     Code,
     Instagram,
   } from "lucide-svelte";
+  import XLogo from "./icons/XLogo.svelte";
+  import DiscordLogo from "./icons/DiscordLogo.svelte";
   import { myData } from "$lib/data/myData";
 
   let mounted = false;
@@ -108,6 +110,24 @@
               aria-label="Instagram"
             >
               <Instagram size={19} />
+            </a>
+            <a
+              href={myData.profile.x}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-[#9C917C] hover:text-[#D9A441] transition-colors"
+              aria-label="X (Twitter)"
+            >
+              <XLogo size={17} />
+            </a>
+            <a
+              href={myData.profile.discord}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-[#9C917C] hover:text-[#D9A441] transition-colors"
+              aria-label="Discord"
+            >
+              <DiscordLogo size={19} />
             </a>
             <a
               href={`mailto:${myData.profile.email}`}
